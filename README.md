@@ -1,7 +1,7 @@
 # IOT_SummativeWork
 Summative assignment , IOT
 
-# PART ONE : Security System 
+## PART ONE : Security System 
 1. TinkerCad Implementation 
 ![alt text](image.png)
 
@@ -13,10 +13,10 @@ Summative assignment , IOT
 
 ![alt text](image-1.png)
 
-# PART TWO : SMART FARM and DASHBOARD ON ThingSpeak 
+## PART TWO : SMART FARM and DASHBOARD ON ThingSpeak 
 
 
-# PART THREE : 
+## PART THREE : 
 
 
 
