@@ -7,7 +7,7 @@ const char* ssid = "YOUR_WIFI_SSID";
 const char* password = "YOUR_WIFI_PASSWORD";
 
 // ThingSpeak credentials
-const char* thingSpeakApiKey = "MBNF6MX7ODG2YI4G";
+const char* thingSpeakApiKey = "";
 const unsigned long postingInterval = 10 * 1000; // Interval to post data (in milliseconds)
 
 // Analog pin assignments
