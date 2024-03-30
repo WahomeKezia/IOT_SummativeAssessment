@@ -1,6 +1,7 @@
 
 #include <dht.h>
 
+<<<<<<< HEAD
 #include <DHT.h>
 #include <DHT_U.h>
 
@@ -61,6 +62,11 @@ char ssid[] = "CANALBOX-6A42-2G"; // WiFi SSID
 char password[] = "citadelvillas00";  // WiFi password
 const char* thingSpeakApiKey = "MBNF6MX7ODG2YI4G";
 const unsigned long postingInterval = 10 * 60 * 1000; // Interval to post data (in milliseconds)
+=======
+// ThingSpeak credentials
+const char* thingSpeakApiKey = "";
+const unsigned long postingInterval = 10 * 1000; // Interval to post data (in milliseconds)
+>>>>>>> 4afac4e31d80378d2e4a97662b9b34b8826972aa
 
 WiFiClient client;
 
