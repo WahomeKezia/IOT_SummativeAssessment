@@ -1,10 +1,3 @@
-
-#include <dht.h>
-
-<<<<<<< HEAD
-#include <DHT.h>
-#include <DHT_U.h>
-
 #include <ArduinoWiFiServer.h>
 #include <BearSSLHelpers.h>
 #include <CertStoreBearSSL.h>
@@ -22,16 +15,14 @@
 #include <WiFiServer.h>
 #include <WiFiServerSecure.h>
 #include <WiFiServerSecureBearSSL.h>
-#include <WiFiUdp.h>
-
-
 // #include <WiFi.h>
-// #include <WiFiClient.h>
-// #include <WiFiServer.h>
+#include <WiFiClient.h>
 // #include <WiFiUdp.h>
+#include <LiquidCrystal.h>
+#include <ThingSpeak.h>
+#include <DHT.h>
 
-
-// // minimal testing (WORKS!!)
+// // minimal testing 
 
 // void setup() {
 //   Serial.begin(9600); // Set baud rate to 9600
@@ -43,50 +34,45 @@
 //   delay(1000); // Wait for a second before repeating
 // }
 
-// Connection secrets 
-// const char* ssid = "CANALBOX-6A42-2G";
-// const char* password = "citadelvillas00";
-// const char* thingSpeakApiKey = "MBNF6MX7ODG2YI4G";
-// channel ID =int updateStatus = ThingSpeak.writeFields(2488468, thingSpeakApiKey);
-
-
-// #include <WiFi.h>
-// #include <ESP8266WiFi.h>
+#include <LiquidCrystal.h>
 #include <ThingSpeak.h>
 #include <DHT.h>
 
-#define DHTPIN 3      // Digital pin connected to the DHT sensor
-#define DHTTYPE DHT11 // DHT 11
 
-char ssid[] = "CANALBOX-6A42-2G"; // WiFi SSID
-char password[] = "citadelvillas00";  // WiFi password
-const char* thingSpeakApiKey = "MBNF6MX7ODG2YI4G";
+#define DHTTYPE DHT11 // DHT 11
+#define SOIL_MOISTURE_PIN A0 // Analog pin connected to the soil moisture sensor
+
+const int DHTPIN = D2; // Digital pin connected to the DHT sensor initilize it as an int 
+
+char ssid[] = ""; // WiFi SSID
+char password[] = ""; // WiFi password
+
+
+const char* thingSpeakApiKey = ""; // get the  value from channel APIkey
 const unsigned long postingInterval = 10 * 60 * 1000; // Interval to post data (in milliseconds)
-=======
-// ThingSpeak credentials
-const char* thingSpeakApiKey = "";
-const unsigned long postingInterval = 10 * 1000; // Interval to post data (in milliseconds)
->>>>>>> 4afac4e31d80378d2e4a97662b9b34b8826972aa
+
+
+
 
 WiFiClient client;
-
 DHT dht(DHTPIN, DHTTYPE);
 
-void setup() {
+// LCD connections to NodeMCU
+LiquidCrystal lcd(D3, D4, D5, D6, D7, D8); // RS, E, DB4, DB5, DB6, DB7
 
-  Serial.begin(115200); // match serial monito baud
+
+void setup() {
+  Serial.begin(9600); // match serial monitor baud
 
   delay(100); // Give time to initialize
   
   // Connect to WiFi
   Serial.print("Connecting to WiFi...");
-
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
   }
-
   Serial.println("Connected to WiFi");
 
   // Initialize ThingSpeak
@@ -94,24 +80,44 @@ void setup() {
 
   // Initialize DHT sensor
   dht.begin();
+
+  // Initialize LCD
+  lcd.begin(16, 2); // Adjust the parameters if your LCD is different
+  lcd.clear();
+  lcd.print("Temperature:");
+  lcd.setCursor(0, 1);
+  lcd.print("Humidity:");
 }
 
 void loop() {
   // Read temperature and humidity
   float temperature = dht.readTemperature();
   float humidity = dht.readHumidity();
+
+   // Read soil moisture
+  int soilMoisture = analogRead(SOIL_MOISTURE_PIN);
   
-  // Print sensor values
+  // Print sensor values to LCD
+  // lcd.setCursor(13, 0);
+  lcd.print(temperature);
+  lcd.setCursor(13, 1);
+  lcd.print(humidity);
+
+  // Print sensor values to Serial Monitor
   Serial.print("Temperature: ");
   Serial.print(temperature);
   Serial.println(" °C");
   Serial.print("Humidity: ");
   Serial.print(humidity);
   Serial.println(" %");
+  Serial.print("Soil Moisture: ");
+  Serial.println(soilMoisture);
 
   // Update ThingSpeak channel
   ThingSpeak.setField(1, temperature);
   ThingSpeak.setField(2, humidity);
+  ThingSpeak.setField(3, soilMoisture);
+  
   int updateStatus = ThingSpeak.writeFields(2488468, thingSpeakApiKey);
 
   if (updateStatus == 200) {
