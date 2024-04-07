@@ -4,20 +4,20 @@
 #include <ThingSpeak.h>
 
 // WiFi credentials
-const char* ssid = "CANALBOX-6A42-2G";
-const char* password = "citadelvillas00";
+const char* ssid = ""; // wifi name 
+const char* password = ""; ?//wifi password 
 
 // Adafruit IO configuration
-#define IO_USERNAME  "keziawaho"
-#define IO_KEY       "aio_jQHN41JQLRdknhJrigcUp4EPvEEz"
+#define IO_USERNAME  ""
+#define IO_KEY       ""
 #define AIO_SERVER      "io.adafruit.com"
 #define AIO_SERVERPORT  1883
 #define AIO_USERNAME    IO_USERNAME
 #define AIO_KEY         IO_KEY
 
 // ThingSpeak configuration
-#define THINGSPEAK_CHANNEL_ID 2497327
-#define THINGSPEAK_API_KEY "707OVU9V71B6799X"
+#define THINGSPEAK_CHANNEL_ID "Enter channel ID here"
+#define THINGSPEAK_API_KEY "" // enter API key here 
 
 #define LED_PIN D1 // Digital pin connected to the LED
 #define LIGHT_SENSOR_PIN A0  // Analog pin connected to the light sensor
