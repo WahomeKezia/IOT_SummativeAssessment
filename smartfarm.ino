@@ -44,6 +44,7 @@
 
 const int DHTPIN = D2; // Digital pin connected to the DHT sensor initilize it as an int 
 
+
 char ssid[] = ""; // WiFi SSID
 char password[] = ""; // WiFi password
 
