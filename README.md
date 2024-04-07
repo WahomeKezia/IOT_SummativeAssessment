@@ -13,10 +13,7 @@ Summative assignment , IOT
 
 ![alt text](image-1.png)
 
-## PART TWO : SMART FARM and DASHBOARD ON ThingSpeak 
 
-
-## PART THREE : 
 
 
 
