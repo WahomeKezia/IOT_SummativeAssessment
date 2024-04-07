@@ -10,7 +10,7 @@ const char* password = ""; ?//wifi password
 // Adafruit IO configuration
 #define IO_USERNAME  ""
 #define IO_KEY       ""
-#define AIO_SERVER      "io.adafruit.com"
+#define AIO_SERVER      ""
 #define AIO_SERVERPORT  1883
 #define AIO_USERNAME    IO_USERNAME
 #define AIO_KEY         IO_KEY
