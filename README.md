@@ -8,7 +8,7 @@ Summative assignment , IOT
 
 Tinkercard simulation here : https://www.tinkercad.com/things/gREa9FmzG3c-iot-mr-james-ultrasonic-sensor-piezo-buzzer-and-led/editel?returnTo=%2Fthings%2FgREa9FmzG3c-iot-mr-james-ultrasonic-sensor-piezo-buzzer-and-led 
 
-3. Skematic View EasyEDA
+3. Schematic View EasyEDA
 
 ![alt text](Schematic_IOT_Summative_SecuritySystem_2024-03-27.png)
 
